@@ -1,6 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Banner from "../components/banner/banner";
+import NavBar from "../components/nav/navbar";
+
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -10,6 +13,8 @@ export default function Home() {
       </Head>
 
       <h1>Necflits</h1>
+
+      <NavBar username="John Doe" />
 
       <Banner
         title="Clifford the red dog"
