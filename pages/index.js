@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import Banner from "../components/banner/banner";
 import NavBar from "../components/nav/navbar";
 import Card from "../components/card/card";
+import SectionCards from "@/components/card/section-cards";
 
 
 export default function Home() {
@@ -22,9 +23,8 @@ export default function Home() {
         imgUrl="/static/clifford.webp"
       />
 
-      <Card imgUrl="/static/clifford.webp" size="large" />
-      <Card  size="medium" />
-      <Card imgUrl="/static/clifford.webp" size="small" />
+      <SectionCards title="Watch it again" />
+      
 
       {/* <Navbar />
       <Card /> */}
