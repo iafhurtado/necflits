@@ -7,10 +7,10 @@ import SectionCards from "../components/card/section-cards";
 import { getVideos } from "../lib/videos";
 
 export async function getServerSideProps(context) {
-  const disneyVideos = await getVideos("disney trailer");
-  const productivityVideos = await getVideos("Productivity");
+  const disneyVideos = await getVideos("lofi chillhop");
+  const productivityVideos = await getVideos("Coding music");
 
-  const travelVideos = await getVideos("indie music");
+  const travelVideos = await getVideos("jazzfunk");
   // const popularVideos = await getVideos();
 
   return {
