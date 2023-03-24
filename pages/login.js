@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { magic } from "../lib/magic-client";
 
 import styles from "../styles/Login.module.css";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [userMsg, setUserMsg] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    useEffect(() => {
+        const handleComplete = () => {
+          setIsLoading(false);
+        };
+        router.events.on("routeChangeComplete", handleComplete);
+        router.events.on("routeChangeError", handleComplete);
+    
+        return () => {
+          router.events.off("routeChangeComplete", handleComplete);
+          router.events.off("routeChangeError", handleComplete);
+        };
+      }, [router]);
+
+      
     const handleOnChangeEmail = (e) => {
     setUserMsg("");
     console.log("event", e);
@@ -20,16 +36,33 @@ const Login = () => {
     const handleLoginWithEmail = async (e) => {
         console.log("hi button");
         e.preventDefault();
+        setIsLoading(true);
 
         if (email) {
-            if (email === "kulkarni.ankita09@gmail.com") {
-                // route to dashboard
-                router.push("/");
+            if (email === "iafhurtado@gmail.com") {
+                 //  log in a user by their email
+                try {
+                    const didToken = await magic.auth.loginWithMagicLink({
+                    email,
+                    });
+                    console.log({ didToken });
+                    if (didToken) {
+                        setIsLoading(false);
+                        router.push("/");
+                      }
+                } catch (error) {
+                    // Handle errors if required!
+                    console.error("Something went wrong logging in", error);
+                    setIsLoading(false);
+                }
+
               } else {
-                console.log("Something went wrong logging in");
+                setIsLoading(false);
+                setUserMsg("Something went wrong logging in");
               }
         } else {
           // show user message
+          setIsLoading(false);
           setUserMsg("Enter a valid email address");
         }
       };
@@ -69,7 +102,7 @@ const Login = () => {
 
         <p className={styles.userMsg}>{userMsg}</p>
         <button onClick={handleLoginWithEmail} className={styles.loginBtn}>
-          Sign In
+            {isLoading ? "Loading..." : "Sign In"}
         </button>
       </div>
     </main>
