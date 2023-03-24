@@ -8,7 +8,7 @@ import { getPopularVideos, getVideos } from "../lib/videos";
 import { magic } from "../lib/magic-client";
 
 export async function getServerSideProps(context) {
-  const disneyVideos = await getVideos("lofi chillhop");
+  const disneyVideos = await getVideos("chillhop");
   const productivityVideos = await getVideos("Coding music");
 
   const travelVideos = await getVideos("jazzfunk");
