@@ -25,7 +25,7 @@ const Login = () => {
         };
       }, [router]);
 
-      
+
     const handleOnChangeEmail = (e) => {
     setUserMsg("");
     console.log("event", e);
@@ -39,7 +39,7 @@ const Login = () => {
         setIsLoading(true);
 
         if (email) {
-            if (email === "iafhurtado@gmail.com") {
+            if (email) {
                  //  log in a user by their email
                 try {
                     const didToken = await magic.auth.loginWithMagicLink({
