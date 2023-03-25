@@ -59,8 +59,10 @@ const Video = ({ video }) => {
           type="text/html"
           width="100%"
           height="360"
-          src={`https://www.youtube.com/embed/${router.query.videoId}?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+          src={`https://www.youtube.com/embed/${router.query.videoId}?autoplay=1&controls=1&origin=http://example.com&controls=0&rel=1`}
           frameBorder="0"
+
+
         ></iframe>
         <div className={styles.modalBody}>
           <div className={styles.modalBodyContent}>
