@@ -36,15 +36,16 @@ export default function Home({
       <div className={styles.main}>
         <NavBar />
         <Banner
-          title="Chillhop"
+          title="LoFi Girl"
           description="Chillhop is a music label dedicated to releasing the best lofi hip hop music for studying, relaxing, and working."
           imgUrl="https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg"
+          videoId="5qap5aO4i9A"
         />
         <div className={styles.sectionWrapper}>
-          <SectionCards title="Chillhop" videos={disneyVideos} size="large" />
-          <SectionCards title="Jazz Funk" videos={travelVideos} size="small" />
+          <SectionCards title="Chillhop Greatest Hits" videos={disneyVideos} size="large" />
+          <SectionCards title="Jazz Funk Section" videos={travelVideos} size="small" />
           <SectionCards
-            title="Productive Lofi"
+            title="More LoFi"
             videos={productivityVideos}
             size="medium"
           />
