@@ -6,6 +6,7 @@ import Card from "../components/card/card";
 import SectionCards from "../components/card/section-cards";
 import { getPopularVideos, getVideos } from "../lib/videos";
 import { magic } from "../lib/magic-client";
+import { startFetchMyQuery } from "../lib/db/hasura";
 
 export async function getServerSideProps(context) {
   const disneyVideos = await getVideos("chillhop");
@@ -25,7 +26,7 @@ export default function Home({
   productivityVideos,
   popularVideos,
 }) {
-
+  startFetchMyQuery();
   return (
     <div className={styles.container}>
       <Head>
@@ -35,7 +36,7 @@ export default function Home({
       <div className={styles.main}>
         <NavBar />
         <Banner
-          videoId="4zH5iYM4wJo"
+          videoId="xvFZjo5PgG0"
           title="Clifford the red dog"
           subTitle="a very cute dog"
           imgUrl="/static/clifford.webp"

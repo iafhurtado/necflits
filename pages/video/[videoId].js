@@ -22,7 +22,7 @@ export async function getStaticProps(context) {
   };
 }
 export async function getStaticPaths() {
-  const listOfVideos = ["mYfJxlgR2jw", "4zH5iYM4wJo", "KCPEHsAViiQ"];
+  const listOfVideos = [];
   const paths = listOfVideos.map((videoId) => ({
     params: { videoId },
   }));
