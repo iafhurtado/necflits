@@ -1,10 +1,9 @@
-module.exports = {
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'i.ytimg.com',
-      },
-    ],
+    domains: ["images.unsplash.com", "i.ytimg.com"],
   },
-}
+};
+
+module.exports = nextConfig;

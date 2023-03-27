@@ -1,4 +1,4 @@
-import { magicAdmin } from "../../lib/magic";
+import { magicAdmin } from "../../lib/db/magic";
 import jwt from "jsonwebtoken";
 import { createNewUser, isNewUser } from "../../lib/db/hasura";
 
@@ -28,22 +28,17 @@ export default async function login(req, res) {
             },
             "thisisasecretthisisasecrett1234"
         );
-        console.log({ token });
-        // CHECK IF USER EXISTS
+        
 
-        if (isNewUserQuery) {
-            const createNewUserMutation = await createNewUser(token, metadata);
-            console.log({ createNewUserMutation });
-            res.send({ done: true, msg: "is a new user" });
-          } else {
-            res.send({ done: true, msg: "not a new user" });
-          }
-        res.send({ done: true, isNewUserQuery });
-      } catch (error) {
-        console.error("Something went wrong logging in", error);
-        res.status(500).send({ done: false });
-      }
-    } else {
-      res.send({ done: false });
+        const isNewUserQuery = await isNewUser(token, metadata.issuer);
+        isNewUserQuery && (await createNewUser(token, metadata));
+        setTokenCookie(token, res);
+        res.send({ done: true });
+    } catch (error) {
+      console.error("Something went wrong logging in", error);
+      res.status(500).send({ done: false });
     }
+  } else {
+    res.send({ done: false });
   }
+}
