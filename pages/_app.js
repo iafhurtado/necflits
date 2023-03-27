@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    /* const handleLoggedIn = async () => {
+    const handleLoggedIn = async () => {
       const isLoggedIn = await magic.user.isLoggedIn();
       if (isLoggedIn) {
         // route to /
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
         router.push("/login");
       }
     };
-    handleLoggedIn(); */
+    handleLoggedIn();
   }, []);
 
   useEffect(() => {

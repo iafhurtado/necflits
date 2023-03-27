@@ -36,10 +36,9 @@ export default function Home({
       <div className={styles.main}>
         <NavBar />
         <Banner
-          videoId="xvFZjo5PgG0"
-          title="Clifford the red dog"
-          subTitle="a very cute dog"
-          imgUrl="/static/clifford.webp"
+          title="Chillhop"
+          description="Chillhop is a music label dedicated to releasing the best lofi hip hop music for studying, relaxing, and working."
+          imgUrl="https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg"
         />
         <div className={styles.sectionWrapper}>
           <SectionCards title="Chillhop" videos={disneyVideos} size="large" />
